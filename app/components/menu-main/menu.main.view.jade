@@ -1,0 +1,22 @@
+div.navbar-wrapper
+  div.container
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      div.navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(ng-click="vm.changeLocation('/home')") CruX
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-menu
+            li(ng-click="vm.changeLocation('/home')", ng-class="{'active': vm.path == '/home'}")
+              a Home
+            //- li(ng-click="vm.changeLocation('/stat')", ng-class="{'active': vm.path == '/stat'}")
+            //-   a Stat
+            li(ng-click="vm.changeLocation('/history')", ng-class="{'active': vm.path == '/history'}")
+              a History
+            li(ng-click="vm.changeLocation('/about')", ng-class="{'active': vm.path == '/about'}")
+              a About
+
+  div(ui-view="")

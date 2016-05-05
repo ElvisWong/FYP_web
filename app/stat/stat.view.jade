@@ -1,0 +1,21 @@
+.container-fluid.margin-top
+	.row
+		h2.chart-heading Prediction Statistics
+		div.linechart-wrapper
+			h4.text-center Tweets count prediction results based on each analysis methods
+			canvas(tc-chartjs, chart-type="line", chart-data="vm.chartData", chart-options="vm.chartOptions", width="800", height="350", auto-legend)
+		div.piechart-container.pull-left
+			h4.text-center Unigram Model Distributions Example with 100 training tweets
+			span.pull-left Total: {{vm.unigramsCount}}
+			div.piechart-wrapper
+				canvas(tc-chartjs-pie, chart-data="vm.unigramsData", chart-options="vm.unigramsOptions", width="400", height="400", auto-legend)
+		div.barchart-wrapper.pull-right
+			h4.text-center Bigram Model Distributions Example with 100 training tweets
+			canvas(tc-chartjs-bar, chart-options="vm.bigramsOptions", chart-data="vm.bigramsData", auto-legend, width="500", height="350")
+		div.barchart-wrapper-2
+			h4.text-center Related Trend Distribution
+			canvas(tc-chartjs-bar, chart-options="vm.relatedOptions", chart-data="vm.relatedData", auto-legend, width="800", height="350")
+		//- div.chart-wrapper
+		//- 	mwr-bar-chart(ng-if="vm.showData", chart-data="vm.myData")
+
+include ../components/menu-main/menu.main.footer.jade

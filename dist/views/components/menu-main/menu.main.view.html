@@ -1,0 +1,18 @@
+
+<div class="navbar-wrapper">
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a ng-click="vm.changeLocation('/home')" class="navbar-brand">CruX</a>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-menu">
+            <li ng-click="vm.changeLocation('/home')" ng-class="{'active': vm.path == '/home'}"><a>Home</a></li>
+            <li ng-click="vm.changeLocation('/history')" ng-class="{'active': vm.path == '/history'}"><a>History</a></li>
+            <li ng-click="vm.changeLocation('/about')" ng-class="{'active': vm.path == '/about'}"><a>About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div ui-view=""></div>
+</div>

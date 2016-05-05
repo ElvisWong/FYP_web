@@ -1,0 +1,88 @@
+//- Banner and search bar
+.container-fluid.margin-top
+  .row
+    .col-lg-10.col-lg-offset-1.banner
+      .input-group.search-bar
+        input#srch-term.form-control(type='text', autofocus='autofocus', placeholder='Search', name='srch-term', ng-model="vm.search")
+        button.btn.btn-default.pull-right(type="submit", ng-click="vm.clickSearch()")
+          i.glyphicon.glyphicon-search
+      img.banner-image(src='img/banner.png')
+      .desc
+        p Trends - The Today's Answers to Tomorrow's Questions
+  div.wrapper(ng-if="vm.showSearchResult")
+    slick.slider.multiple-items(infinite="vm.carouselInfinite", slide-to-show="vm.slideToShow", slide-to-scroll="vm.slideToScroll", init-onload="true", data="vm.relatedItem")
+      div(ng-repeat="(key, value) in vm.relatedItem | limitTo:10")
+        h2.text-center(ng-if="$first") Your search result for {{key}}: {{value}} tweets count
+        h2.text-center(ng-if="!$first") These are the related trends towards the topic: {{key}} = {{value}}
+
+  .row(ng-if="vm.showSearchResult")
+    h2.chart-heading Prediction Statistics
+    div.barchart-wrapper-2
+      h4.text-center Related Trend Distribution
+      canvas(tc-chartjs-bar, chart-options="vm.relatedOptions", chart-data="vm.relatedData", auto-legend, width="800", height="350")
+    div.linechart-wrapper
+      h4.text-center Tweets count prediction results based on each analysis methods
+      canvas(tc-chartjs, chart-type="line", chart-data="vm.chartData", chart-options="vm.chartOptions", width="800", height="350", auto-legend)
+    div.piechart-container.pull-left
+      h4.text-center Unigram Model Distributions Example with 100 training tweets
+      span.pull-left Total: {{vm.unigramsCount}}
+      div.piechart-wrapper
+        canvas(tc-chartjs-pie, chart-data="vm.unigramsData", chart-options="vm.unigramsOptions", width="400", height="400", auto-legend)
+    div.barchart-wrapper.pull-right
+      h4.text-center Bigram Model Distributions Example with 100 training tweets
+      canvas(tc-chartjs-bar, chart-options="vm.bigramsOptions", chart-data="vm.bigramsData", auto-legend, width="500", height="350")
+    
+//- //-
+//-   Marketing messaging and featurettes
+//-   ==================================================
+//- //- Wrap the rest of the page in another container to center all the content.
+//- .container.marketing
+//-   //- Three columns of text below the carousel
+//-   .row
+//-     .col-lg-4
+//-       img.img-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
+//-       h2 Heading
+//-       p | Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+//-       p
+//-         a.btn.btn-default(href='#', role='button') View details 禄
+//-     .col-lg-4
+//-       img.img-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
+//-       h2 Heading
+//-       p | Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
+//-       p
+//-         a.btn.btn-default(href='#', role='button') View details 禄
+//-     .col-lg-4
+//-       img.img-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
+//-       h2 Heading
+//-       p | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+//-       p
+//-         a.btn.btn-default(href='#', role='button') View details 禄
+//-   //- START THE FEATURETTES
+//-   hr.featurette-divider
+//-   .row.featurette
+//-     .col-md-7
+//-       h2.featurette-heading | First featurette heading. 
+//-         span.text-muted It'll blow your mind.
+//-       p.lead | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+//-     .col-md-5
+//-       img.featurette-image.img-responsive.center-block(data-src='holder.js/500x500/auto', alt='Generic placeholder image')
+//-   hr.featurette-divider
+//-   .row.featurette
+//-     .col-md-7.col-md-push-5
+//-       h2.featurette-heading | Oh yeah, it's that good. 
+//-         span.text-muted See for yourself.
+//-       p.lead | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+//-     .col-md-5.col-md-pull-7
+//-       img.featurette-image.img-responsive.center-block(data-src='holder.js/500x500/auto', alt='Generic placeholder image')
+//-   hr.featurette-divider
+//-   .row.featurette
+//-     .col-md-7
+//-       h2.featurette-heading | And lastly, this one. 
+//-         span.text-muted Checkmate.
+//-       p.lead | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+//-     .col-md-5
+//-       img.featurette-image.img-responsive.center-block(data-src='holder.js/500x500/auto', alt='Generic placeholder image')
+//-   hr.featurette-divider
+//-   //- /END THE FEATURETTES
+
+include ../components/menu-main/menu.main.footer.jade

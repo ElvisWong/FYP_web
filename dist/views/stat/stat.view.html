@@ -1,0 +1,44 @@
+
+<div class="container-fluid margin-top">
+  <div class="row">
+    <h2 class="chart-heading">Prediction Statistics</h2>
+    <div class="linechart-wrapper">
+      <h4 class="text-center">Tweets count prediction results based on each analysis methods</h4>
+      <canvas tc-chartjs="tc-chartjs" chart-type="line" chart-data="vm.chartData" chart-options="vm.chartOptions" width="800" height="350" auto-legend="auto-legend"></canvas>
+    </div>
+    <div class="piechart-container pull-left">
+      <h4 class="text-center">Unigram Model Distributions Example with 100 training tweets</h4><span class="pull-left">Total: {{vm.unigramsCount}}</span>
+      <div class="piechart-wrapper">
+        <canvas tc-chartjs-pie="tc-chartjs-pie" chart-data="vm.unigramsData" chart-options="vm.unigramsOptions" width="400" height="400" auto-legend="auto-legend"></canvas>
+      </div>
+    </div>
+    <div class="barchart-wrapper pull-right">
+      <h4 class="text-center">Bigram Model Distributions Example with 100 training tweets</h4>
+      <canvas tc-chartjs-bar="tc-chartjs-bar" chart-options="vm.bigramsOptions" chart-data="vm.bigramsData" auto-legend="auto-legend" width="500" height="350"></canvas>
+    </div>
+    <div class="barchart-wrapper-2">
+      <h4 class="text-center">Related Trend Distribution</h4>
+      <canvas tc-chartjs-bar="tc-chartjs-bar" chart-options="vm.relatedOptions" chart-data="vm.relatedData" auto-legend="auto-legend" width="800" height="350"></canvas>
+    </div>
+  </div>
+</div>
+<footer class="nav-footer">
+  <p class="pull-right"><a href="#">Back to top</a></p>
+  <p><span>&#169; 2015 CurX Company, Inc.&nbsp;</span><span>| &nbsp;</span><a href="#">Privacy&nbsp; </a><span>| &nbsp;</span><a href="#">Terms</a></p>
+</footer>
+<div class="loading text-center">
+  <div class="bg">
+    <div class="el"></div>
+  </div>
+  <div class="loader">
+    <div class="loader-container">
+      <div class="canvas">
+        <div class="leaf leaf-top-right"></div>
+        <div class="leaf leaf-top-left"></div>
+        <div class="leaf leaf-bottom-right"></div>
+        <div class="leaf leaf-bottom-left"></div>
+        <div class="center"></div>
+      </div>
+    </div>
+  </div>
+</div>
